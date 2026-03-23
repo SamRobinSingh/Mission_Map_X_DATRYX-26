@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 150 100% 80%;
+
+    --card: 220 18% 8%;
+    --card-foreground: 150 80% 75%;
+
+    --popover: 220 18% 8%;
+    --popover-foreground: 150 80% 75%;
+
+    --primary: 150 100% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 190 100% 45%;
+    --secondary-foreground: 220 20% 4%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 150 20% 50%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 40% 18%;
+    --input: 220 15% 15%;
+    --ring: 150 100% 50%;
+
+    --radius: 0.5rem;
+
+    --neon-green: 150 100% 50%;
+    --neon-cyan: 190 100% 50%;
+    --neon-red: 0 100% 55%;
+    --neon-yellow: 50 100% 55%;
+    --neon-purple: 270 100% 65%;
+    --dark-surface: 220 18% 6%;
+    --dark-elevated: 220 18% 10%;
+    --dark-overlay: 220 20% 4%;
+
+    --sidebar-background: 220 18% 6%;
+    --sidebar-foreground: 150 80% 75%;
+    --sidebar-primary: 150 100% 50%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 150 80% 75%;
+    --sidebar-border: 150 40% 18%;
+    --sidebar-ring: 150 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .neon-glow {
+    text-shadow: 0 0 7px hsl(var(--neon-green)), 0 0 10px hsl(var(--neon-green)), 0 0 21px hsl(var(--neon-green));
+  }
+
+  .neon-glow-cyan {
+    text-shadow: 0 0 7px hsl(var(--neon-cyan)), 0 0 10px hsl(var(--neon-cyan)), 0 0 21px hsl(var(--neon-cyan));
+  }
+
+  .neon-box {
+    box-shadow: 0 0 5px hsl(var(--neon-green) / 0.3), 0 0 10px hsl(var(--neon-green) / 0.1), inset 0 0 5px hsl(var(--neon-green) / 0.1);
+  }
+
+  .neon-box-cyan {
+    box-shadow: 0 0 5px hsl(var(--neon-cyan) / 0.3), 0 0 10px hsl(var(--neon-cyan) / 0.1), inset 0 0 5px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .neon-box-red {
+    box-shadow: 0 0 5px hsl(var(--neon-red) / 0.3), 0 0 10px hsl(var(--neon-red) / 0.1), inset 0 0 5px hsl(var(--neon-red) / 0.1);
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--neon-green) / 0.03) 2px,
+      hsl(var(--neon-green) / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--neon-green) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon-green) / 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .map-node {
+    @apply relative cursor-pointer transition-all duration-300;
+  }
+
+  .map-node-normal {
+    @apply border-2 border-primary/60 bg-card;
+  }
+
+  .map-node-trap {
+    @apply border-2 bg-card;
+    border-color: hsl(var(--neon-red) / 0.6);
+  }
+
+  .map-node-bonus {
+    @apply border-2 bg-card;
+    border-color: hsl(var(--neon-yellow) / 0.6);
+  }
+
+  .map-node-hidden {
+    @apply border-2 border-dashed bg-card;
+    border-color: hsl(var(--neon-purple) / 0.6);
+  }
+
+  .map-node-active {
+    @apply scale-110;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .map-node-completed {
+    @apply opacity-60;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--neon-green) / 0.5), 0 0 10px hsl(var(--neon-green) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 15px hsl(var(--neon-green) / 0.8), 0 0 30px hsl(var(--neon-green) / 0.4);
+    }
+  }
+
+  @keyframes pulse-glow-red {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--neon-red) / 0.5), 0 0 10px hsl(var(--neon-red) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 15px hsl(var(--neon-red) / 0.8), 0 0 30px hsl(var(--neon-red) / 0.4);
+    }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.3; }
+    94% { opacity: 1; }
+    96% { opacity: 0.5; }
+    97% { opacity: 1; }
+  }
+
+  .flicker {
+    animation: flicker 4s linear infinite;
+  }
+}
