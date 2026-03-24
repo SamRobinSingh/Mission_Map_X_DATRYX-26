@@ -81,7 +81,7 @@ io.on('connection', async (socket) => {
 });
 
 // Fallback to React Router 
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
