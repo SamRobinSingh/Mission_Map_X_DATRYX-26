@@ -89,6 +89,7 @@ interface GameContextType {
   teams: Record<string, TeamState>;
   currentTeam: TeamState | null;
   currentTeamName: string | null;
+  isInitialized: boolean;
   registerTeam: (name: string, passcode: string) => boolean;
   loginTeam: (name: string, passcode: string) => boolean;
   submitAnswer: (answer: string) => { correct: boolean; nextNode: string; message: string; isSecret?: boolean };
@@ -127,11 +128,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [currentTeamName, setCurrentTeamName] = useState<string | null>(() => localStorage.getItem(TEAM_KEY));
   const [isAdmin, setIsAdmin] = useState(false);
   const [round2Unlocked, setRound2Unlocked] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     socket.on('initialState', (state) => {
       setTeams(state.teams || {});
       setRound2Unlocked(state.round2Unlocked || false);
+      setIsInitialized(true);
     });
 
     socket.on('teamUpdated', (team: TeamState) => {
@@ -428,7 +431,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <GameContext.Provider value={{
-      teams, currentTeam, currentTeamName,
+      teams, currentTeam, currentTeamName, isInitialized,
       registerTeam, loginTeam, submitAnswer, submitSecretCode, skipNode, useHint, logoutTeam,
       isAdmin, setIsAdmin, round2Unlocked, unlockRound2, startRound2ForTeam, eliminateTeam, advanceVideoQueue, clearGameData
     }}>

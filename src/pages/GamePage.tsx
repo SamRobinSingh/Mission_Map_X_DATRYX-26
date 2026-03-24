@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { playCorrectSound, playWrongSound, playTrapSound, playSecretSound, playNodeEnterSound } from '@/lib/sounds';
 
 export default function GamePage() {
-  const { currentTeam, submitAnswer, submitSecretCode, skipNode, useHint, logoutTeam, currentTeamName, advanceVideoQueue } = useGame();
+  const { currentTeam, isInitialized, submitAnswer, submitSecretCode, skipNode, useHint, logoutTeam, currentTeamName, advanceVideoQueue } = useGame();
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState<{ msg: string; type: 'success' | 'error' | 'secret' } | null>(null);
   const [timeRemaining, setTimeRemaining] = useState(0);
@@ -16,8 +16,8 @@ export default function GamePage() {
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!currentTeam) navigate('/');
-  }, [currentTeam, navigate]);
+    if (isInitialized && !currentTeam) navigate('/');
+  }, [currentTeam, isInitialized, navigate]);
 
   // Auto-play videos queued by admin fast-forwarding
   useEffect(() => {
@@ -40,10 +40,11 @@ export default function GamePage() {
 
   // Countdown timer
   useEffect(() => {
-    if (!currentTeam || currentTeam.isFinished) return;
+    if (!currentTeam || currentTeam.isFinished || !isInitialized) return;
     const isRound2 = currentTeam.currentRound === 2;
     const startTime = isRound2 && currentTeam.round2StartTime
-      ? currentTeam.round2StartTime : currentTeam.startTime;
+      ? currentTeam.round2StartTime
+      : currentTeam.startTime;
     const currentTotalTime = isRound2 ? 45 * 60 : 20 * 60;
 
     const interval = setInterval(() => {
