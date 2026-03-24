@@ -60,7 +60,7 @@ export default function AdminDashboard() {
     return Math.round((visited.length / ROUND2_MAIN_NODES.length) * 100);
   };
 
-  const sortedR1 = [...teamList].sort((a, b) => {
+  const sortedR1 = [...teamList].filter(t => t.currentRound === 1).sort((a, b) => {
     if (a.round1Complete && !b.round1Complete) return -1;
     if (!a.round1Complete && b.round1Complete) return 1;
     if (a.round1Complete && b.round1Complete) return (a.round1EndTime || 0) - a.startTime - ((b.round1EndTime || 0) - b.startTime);
