@@ -43,7 +43,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You enter the Hogwarts Library. Madam Pince eyes you suspiciously as you search the Restricted Section for clues.',
     question: 'Which programming language is known as the "language of the web"?',
     correctAnswer: 'JAVASCRIPT',
-    nextOnCorrect: 'R1_N2', x: 40.0, y: 82.0,
+    nextOnCorrect: 'R1_N2', x: 40, y: 53,
   },
   R1_N2: {
     id: 'R1_N2', type: 'normal', round: 1,
@@ -51,7 +51,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Professor Snape glares at you. "Tell me... or I shall take 50 points from your house."',
     question: 'What does "CSS" stand for?',
     correctAnswer: 'CASCADING STYLE SHEETS',
-    nextOnCorrect: 'R1_N3', x: 33.9, y: 74.9,
+    nextOnCorrect: 'R1_N3', x: 45.7, y: 62.5,
   },
   R1_N3: {
     id: 'R1_N3', type: 'normal', round: 1,
@@ -59,7 +59,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Professor Flitwick demonstrates the Levitation Charm. "Swish and flick! But first, prove your logic!"',
     question: 'What is the output of: print(2 ** 3)?',
     correctAnswer: '8',
-    nextOnCorrect: 'R1_N4', x: 38.7, y: 68.1,
+    nextOnCorrect: 'R1_N4', x: 45.3, y: 67.7,
   },
   R1_N4: {
     id: 'R1_N4', type: 'normal', round: 1,
@@ -67,7 +67,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'The enchanted ceiling shows a stormy sky. A riddle floats above the staff table.',
     question: 'In Python, which keyword is used to define a function?',
     correctAnswer: 'DEF',
-    nextOnCorrect: 'R1_N5', x: 35.1, y: 64.1,
+    nextOnCorrect: 'R1_N5', x: 35, y: 65.2,
   },
   R1_N5: {
     id: 'R1_N5', type: 'normal', round: 1,
@@ -75,7 +75,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Hedwig hoots impatiently. An encrypted message is tied to her leg.',
     question: 'What does "API" stand for?',
     correctAnswer: 'APPLICATION PROGRAMMING INTERFACE',
-    nextOnCorrect: 'R1_N6', x: 45.3, y: 53.3,
+    nextOnCorrect: 'R1_N6', x: 29.3, y: 60.9,
   },
   R1_N6: {
     id: 'R1_N6', type: 'normal', round: 1,
@@ -83,7 +83,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'A Hungarian Horntail guards the next clue! You must answer quickly before it breathes fire!',
     question: 'What data structure uses FIFO (First In, First Out)?',
     correctAnswer: 'QUEUE',
-    nextOnCorrect: 'R1_N7', x: 41.3, y: 49.9,
+    nextOnCorrect: 'R1_N7', x: 24.5, y: 54.6,
   },
   R1_N7: {
     id: 'R1_N7', type: 'normal', round: 1,
@@ -91,7 +91,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You dive into the Black Lake for the second task. Merpeople guard the answer.',
     question: 'What is the time complexity of binary search?',
     correctAnswer: 'O(LOG N)',
-    nextOnCorrect: 'R1_N8', x: 49.1, y: 44.4,
+    nextOnCorrect: 'R1_N8', x: 27.7, y: 48.1,
   },
   R1_N8: {
     id: 'R1_N8', type: 'normal', round: 1,
@@ -99,7 +99,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'The Room of Requirement transforms to show you exactly what you need — a coding challenge!',
     question: 'What does "SQL" stand for?',
     correctAnswer: 'STRUCTURED QUERY LANGUAGE',
-    nextOnCorrect: 'R1_N9', x: 54.3, y: 46.9,
+    nextOnCorrect: 'R1_N9', x: 24.8, y: 45.3,
   },
   R1_N9: {
     id: 'R1_N9', type: 'normal', round: 1,
@@ -107,7 +107,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Professor Lupin teaches you the Patronus Charm. "Think of your happiest memory — and solve this!"',
     question: 'In Boolean algebra: TRUE AND FALSE = ?',
     correctAnswer: 'FALSE',
-    nextOnCorrect: 'R1_N10', x: 59.1, y: 50.5,
+    nextOnCorrect: 'R1_N10', x: 28.1, y: 37.1,
   },
   R1_N10: {
     id: 'R1_N10', type: 'normal', round: 1,
@@ -115,7 +115,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Dumbledore\'s Pensieve swirls with silver memories. You dive into a memory that holds a clue.',
     question: 'What protocol uses port 443?',
     correctAnswer: 'HTTPS',
-    nextOnCorrect: 'R1_N11', x: 70.6, y: 49.2,
+    nextOnCorrect: 'R1_N11', x: 36.1, y: 32.7,
   },
   R1_N11: {
     id: 'R1_N11', type: 'normal', round: 1,
@@ -123,7 +123,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'The goblins of Gringotts guard a magical artifact in Vault 713. Solve the riddle to open the vault!',
     question: 'What does "RAM" stand for?',
     correctAnswer: 'RANDOM ACCESS MEMORY',
-    nextOnCorrect: 'R1_N12', x: 62.8, y: 56.6,
+    nextOnCorrect: 'R1_N12', x: 45.8, y: 31.3,
   },
   R1_N12: {
     id: 'R1_N12', type: 'normal', round: 1,
@@ -131,7 +131,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'The Mirror of Erised shows your deepest desire. But first, it demands an answer.',
     question: 'What is 0xFF in decimal?',
     correctAnswer: '255',
-    nextOnCorrect: 'R1_N13', x: 68.3, y: 63.8,
+    nextOnCorrect: 'R1_N13', x: 52.5, y: 28,
   },
   R1_N13: {
     id: 'R1_N13', type: 'normal', round: 1,
@@ -139,7 +139,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Aragog\'s children surround you. Only a correct answer will make them retreat!',
     question: 'What data structure uses LIFO (Last In, First Out)?',
     correctAnswer: 'STACK',
-    nextOnCorrect: 'R1_N14', x: 80.5, y: 58.8,
+    nextOnCorrect: 'R1_N14', x: 62.4, y: 31,
   },
   R1_N14: {
     id: 'R1_N14', type: 'normal', round: 1,
@@ -147,7 +147,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You soar on a broomstick over the Quidditch pitch. The Golden Snitch holds a riddle!',
     question: 'What keyword exits a loop in most programming languages?',
     correctAnswer: 'BREAK',
-    nextOnCorrect: 'R1_N15', x: 82.2, y: 50.2,
+    nextOnCorrect: 'R1_N15', x: 73.5, y: 36,
   },
   R1_N15: {
     id: 'R1_N15', type: 'normal', round: 1,
@@ -155,7 +155,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'From the highest tower of Hogwarts, you can see the dark mark in the sky. A final series of challenges awaits.',
     question: 'What does "CPU" stand for?',
     correctAnswer: 'CENTRAL PROCESSING UNIT',
-    nextOnCorrect: 'R1_N16', x: 76.9, y: 38.0,
+    nextOnCorrect: 'R1_N16', x: 77.9, y: 39.6,
   },
   R1_N16: {
     id: 'R1_N16', type: 'normal', round: 1,
@@ -163,7 +163,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You stand before the Chamber of Secrets. The sink with the snake etching awaits your answer.',
     question: 'What logic gate outputs TRUE only when both inputs are TRUE?',
     correctAnswer: 'AND',
-    nextOnCorrect: 'R1_N17', x: 52, y: 4,
+    nextOnCorrect: 'R1_N17', x: 83.8, y: 40.2,
   },
   R1_N17: {
     id: 'R1_N17', type: 'normal', round: 1,
@@ -171,7 +171,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You face the final protection — a logic puzzle set by Snape himself!',
     question: 'What is the default port for HTTP?',
     correctAnswer: '80',
-    nextOnCorrect: 'R1_N18', x: 60, y: 6,
+    nextOnCorrect: 'R1_N18', x: 91.7, y: 46.5,
   },
   R1_N18: {
     id: 'R1_N18', type: 'normal', round: 1,
@@ -179,7 +179,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Professor Trelawney peers into her crystal ball. "I see... a question in your near future!"',
     question: 'What does DNS stand for?',
     correctAnswer: 'DOMAIN NAME SYSTEM',
-    nextOnCorrect: 'R1_N19', x: 70, y: 10,
+    nextOnCorrect: 'R1_N19', x: 89.4, y: 51.9,
   },
   R1_N19: {
     id: 'R1_N19', type: 'normal', round: 1,
@@ -187,7 +187,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'Hermione\'s Time-Turner glows. "We need more time!" she says. Solve this to turn back time!',
     question: 'How many bits are in a byte?',
     correctAnswer: '8',
-    nextOnCorrect: 'R1_N20', x: 75, y: 12,
+    nextOnCorrect: 'R1_N20', x: 85.8, y: 60.2,
   },
   R1_N20: {
     id: 'R1_N20', type: 'normal', round: 1,
@@ -195,7 +195,7 @@ export const ROUND1_NODES: Record<string, GameNode> = {
     storyText: 'You hold the Elder Wand! Cast the final spell to seal the dark forces away forever!',
     question: 'What is the answer to life, the universe, and everything? (Hint: Douglas Adams)',
     correctAnswer: '42',
-    nextOnCorrect: 'R1_FINAL', x: 82, y: 16,
+    nextOnCorrect: 'R1_FINAL', x: 79.8, y: 69.8,
   },
   R1_FINAL: {
     id: 'R1_FINAL', type: 'waiting', round: 1,
