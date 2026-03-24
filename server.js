@@ -1,8 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import fs from 'fs/promises';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -20,32 +19,29 @@ app.use(express.static(path.join(__dirname, 'dist')));
 const server = createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
-let db;
+const DB_FILE = path.join(__dirname, 'database.json');
+
 async function initDB() {
-  db = await open({ filename: './database.sqlite', driver: sqlite3.Database });
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS game_state (
-      key TEXT PRIMARY KEY,
-      value TEXT
-    )
-  `);
+  try {
+    await fs.access(DB_FILE);
+  } catch {
+    await fs.writeFile(DB_FILE, JSON.stringify({ teams: {}, round2Unlocked: false }));
+  }
 }
 
 async function getState() {
-  const teamsRow = await db.get(`SELECT value FROM game_state WHERE key = 'teams'`);
-  const r2Row = await db.get(`SELECT value FROM game_state WHERE key = 'round2Unlocked'`);
-  
-  return {
-    teams: teamsRow && teamsRow.value ? JSON.parse(teamsRow.value) : {},
-    round2Unlocked: r2Row && r2Row.value ? JSON.parse(r2Row.value) : false
-  };
+  try {
+    const data = await fs.readFile(DB_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return { teams: {}, round2Unlocked: false };
+  }
 }
 
 async function saveState(key, value) {
-  await db.run(
-    `INSERT INTO game_state (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
-    [key, JSON.stringify(value)]
-  );
+  const currentState = await getState();
+  currentState[key] = value;
+  await fs.writeFile(DB_FILE, JSON.stringify(currentState, null, 2));
 }
 
 io.on('connection', async (socket) => {
