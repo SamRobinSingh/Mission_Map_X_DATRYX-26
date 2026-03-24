@@ -218,24 +218,12 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       const updated = { ...prev[targetTeam] };
       updated.round1Complete = true;
       updated.round1EndTime = updated.round1EndTime || Date.now();
+      updated.currentRound = 2;
+      updated.currentNode = 'R2_START';
+      updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
+      updated.round2StartTime = Date.now();
+      updated.videoQueue = []; // Clear any videos just in case
       
-      const highestQ = updated.visitedNodes
-        .filter(n => n.startsWith('R1_N'))
-        .map(n => parseInt(n.replace('R1_N', '')))
-        .filter(n => !isNaN(n))
-        .reduce((max, val) => Math.max(max, val), 0);
-        
-      const q = [];
-      for (let i = highestQ + 1; i <= 20; i++) q.push(i);
-
-      if (q.length > 0) {
-        updated.videoQueue = q;
-      } else {
-        updated.currentRound = 2;
-        updated.currentNode = 'R2_START';
-        updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
-        updated.round2StartTime = Date.now();
-      }
       setTimeout(() => socket.emit('syncTeam', updated), 0);
       return { ...prev, [targetTeam]: updated };
     });

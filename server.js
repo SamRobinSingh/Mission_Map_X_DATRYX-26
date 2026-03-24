@@ -64,6 +64,18 @@ io.on('connection', async (socket) => {
     io.emit('teamUpdated', teamData);
   });
 
+  // Delete / Eliminate a team
+  socket.on('eliminateTeam', async (teamName) => {
+    const currentState = await getState();
+    if(currentState.teams[teamName]) {
+      currentState.teams[teamName].isEliminated = true;
+      currentState.teams[teamName].isFinished = true;
+      currentState.teams[teamName].endTime = Date.now();
+      await saveState('teams', currentState.teams);
+      io.emit('teamUpdated', currentState.teams[teamName]);
+    }
+  });
+
   socket.on('triggerUnlockRound2', async () => {
     await saveState('round2Unlocked', true);
     io.emit('round2UnlockedUpdate', true);
