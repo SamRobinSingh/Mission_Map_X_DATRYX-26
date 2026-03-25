@@ -23,9 +23,10 @@ export default function Login() {
   };
 
   const handleLogin = () => {
-    if (!teamName.trim() || !passcode.trim()) { setError('Enter your house name and passcode.'); return; }
+    if (!teamName.trim()) { setError('Enter your house name to rejoin.'); return; }
+    if (passcode !== '250326') { setError('Invalid House Rejoin Password!'); return; }
     if (loginTeam(teamName, passcode)) navigate('/game');
-    else setError('House not found or incorrect passcode.');
+    else setError('House not found.');
   };
 
   const handleAdmin = () => { setMode('admin'); setError(''); };
