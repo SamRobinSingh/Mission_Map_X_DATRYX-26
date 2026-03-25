@@ -34,7 +34,7 @@ export interface TeamState {
   round2Stats: { correct: number; wrong: number; traps: number; shortcuts: number };
 }
 
-import { ROUND1_QUESTION_POOL } from '@/data/questions';
+import { ROUND1_QUESTION_POOL, ROUND2_QUESTION_POOL } from '@/data/questions';
 
 export function getDynamicNode(nodeId: string, questionOrder?: number[]) {
   const node = GAME_NODES[nodeId];
@@ -54,6 +54,24 @@ export function getDynamicNode(nodeId: string, questionOrder?: number[]) {
           hint: q.hint || node.hint
         };
       }
+    }
+  }
+  if (node.round === 2 && (node.type === 'normal' || node.type === 'start')) {
+    let qIndex = -1;
+    if (node.id === 'R2_START') qIndex = 0;
+    else if (node.id.startsWith('R2_N')) {
+      qIndex = parseInt(node.id.replace('R2_N', '')) - 1;
+    }
+    
+    if (qIndex >= 0 && qIndex < ROUND2_QUESTION_POOL.length) {
+      const q = ROUND2_QUESTION_POOL[qIndex];
+      return {
+        ...node,
+        storyText: q.story,
+        question: q.question,
+        correctAnswer: q.correctAnswer,
+        hint: q.hint || node.hint
+      };
     }
   }
   return node;
