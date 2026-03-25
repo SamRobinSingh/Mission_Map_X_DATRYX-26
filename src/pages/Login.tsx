@@ -58,17 +58,24 @@ export default function Login() {
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
         className="w-full max-w-lg relative z-20">
         {/* Header */}
-        <div className="text-center mb-8">
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', delay: 0.2 }}
-            className="text-6xl mb-4">⚡</motion.div>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <motion.img 
+            src="/logo.png" 
+            alt="DaTryx Logo" 
+            className="h-24 md:h-32 object-contain mb-4 filter drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]"
+            initial={{ scale: 0.8, opacity: 0 }} 
+            animate={{ scale: 1, opacity: 1 }} 
+            transition={{ duration: 0.6, delay: 0.2 }}
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+          />
           <motion.h1 className="text-4xl md:text-5xl font-display font-black tracking-widest mb-3"
             style={{ color: '#fbbf24', textShadow: '0 0 20px rgba(255,215,0,0.4), 0 0 40px rgba(255,215,0,0.2)' }}
             initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}>
-            HOGWARTS QUEST
+            MISSION MAP X
           </motion.h1>
           <motion.p className="text-sm tracking-[0.3em] uppercase text-purple-300/70"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-            The Wizarding Challenge
+            Cyber Operations Arena
           </motion.p>
         </div>
 

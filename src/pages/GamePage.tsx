@@ -144,8 +144,14 @@ export default function GamePage() {
       <div className="z-40 px-4 py-2 flex items-center justify-between flex-shrink-0"
         style={{ background: 'linear-gradient(135deg, rgba(30,15,50,0.95), rgba(20,10,35,0.95))', borderBottom: '1px solid rgba(255,215,0,0.15)' }}>
         <div className="flex items-center gap-3">
+          <img 
+            src="/logo.png" 
+            alt="DaTryx" 
+            className="h-6 object-contain filter drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]" 
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+          />
           <h2 className="font-display text-xs tracking-widest text-amber-400" style={{ textShadow: '0 0 10px rgba(255,215,0,0.3)' }}>
-            ⚡ HOGWARTS QUEST
+            MISSION MAP X
           </h2>
           <span className="text-[10px] px-2 py-0.5 border border-amber-500/30 rounded-full text-amber-300/70 bg-amber-500/10">
             {currentTeamName}

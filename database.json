@@ -493,15 +493,18 @@
     "SDFG": {
       "teamName": "SDFG",
       "passcode": "260326",
-      "currentNode": "R1_START",
+      "currentNode": "R1_N3",
       "visitedNodes": [
-        "R1_START"
+        "R1_START",
+        "R1_N1",
+        "R1_N2",
+        "R1_N3"
       ],
       "wrongAnswers": 0,
       "correctAnswers": 0,
       "trapHits": 0,
       "shortcutsFound": 0,
-      "skipsUsed": 0,
+      "skipsUsed": 2,
       "r1HintsUsed": 0,
       "r2HintsUsed": 0,
       "startTime": 1774468319374,
