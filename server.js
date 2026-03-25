@@ -21,38 +21,38 @@ const io = new Server(server, { cors: { origin: '*' } });
 
 const DB_FILE = path.join(__dirname, 'database.json');
 
+
+
+let inMemoryState = { teams: {}, round2Unlocked: false };
+
 async function initDB() {
   try {
     await fs.access(DB_FILE);
-  } catch {
-    await fs.writeFile(DB_FILE, JSON.stringify({ teams: {}, round2Unlocked: false }));
-  }
-}
-
-async function getState() {
-  try {
     const data = await fs.readFile(DB_FILE, 'utf-8');
-    return JSON.parse(data);
+    inMemoryState = JSON.parse(data);
   } catch {
-    return { teams: {}, round2Unlocked: false };
+    await fs.writeFile(DB_FILE, JSON.stringify(inMemoryState, null, 2));
   }
 }
 
 async function saveState(key, value) {
-  const currentState = await getState();
-  currentState[key] = value;
-  await fs.writeFile(DB_FILE, JSON.stringify(currentState, null, 2));
+  inMemoryState[key] = value;
+  await fs.writeFile(DB_FILE, JSON.stringify(inMemoryState, null, 2));
+}
+
+function getStateSync() {
+  return inMemoryState;
 }
 
 io.on('connection', async (socket) => {
   console.log('Client connected:', socket.id);
   
   // Send initial state on connection
-  const state = await getState();
+  const state = getStateSync();
   socket.emit('initialState', state);
 
   socket.on('syncTeam', async (teamData) => {
-    const currentState = await getState();
+    const currentState = getStateSync();
     if (!teamData || !teamData.teamName) return;
     currentState.teams[teamData.teamName] = teamData;
     await saveState('teams', currentState.teams);
@@ -62,7 +62,7 @@ io.on('connection', async (socket) => {
 
   // Delete / Eliminate a team
   socket.on('eliminateTeam', async (teamName) => {
-    const currentState = await getState();
+    const currentState = getStateSync();
     if(currentState.teams[teamName]) {
       currentState.teams[teamName].isEliminated = true;
       currentState.teams[teamName].isFinished = true;
