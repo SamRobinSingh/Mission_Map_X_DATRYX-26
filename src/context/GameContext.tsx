@@ -270,9 +270,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       if (updated.videoQueue && updated.videoQueue.length > 0) {
         updated.videoQueue = updated.videoQueue.slice(1);
         if (updated.videoQueue.length === 0) {
+           updated.round1Complete = true;
+           updated.round1EndTime = updated.round1EndTime || Date.now();
            updated.currentRound = 2;
            updated.currentNode = 'R2_START';
-           updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
+           if (!updated.visitedNodes.includes('R2_START')) {
+             updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
+           }
            updated.round2StartTime = Date.now();
         }
       }
