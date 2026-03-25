@@ -45,7 +45,7 @@ export default function GamePage() {
     const startTime = isRound2 && currentTeam.round2StartTime
       ? currentTeam.round2StartTime
       : currentTeam.startTime;
-    const currentTotalTime = isRound2 ? 45 * 60 : 20 * 60;
+    const currentTotalTime = isRound2 ? 45 * 60 : 30 * 60;
 
     const interval = setInterval(() => {
       const elapsed = Math.floor((Date.now() - startTime) / 1000);
@@ -55,6 +55,9 @@ export default function GamePage() {
       if (remaining <= 0) {
         setTimerWarning('expired');
         clearInterval(interval);
+        if (playingVideo !== '/Video/END.MOV') {
+           setPlayingVideo('/Video/END.MOV');
+        }
       } else if (remaining <= 60) {
         setTimerWarning('one');
       } else if (remaining <= 300) {
@@ -76,7 +79,9 @@ export default function GamePage() {
     const result = submitAnswer(answer);
     if (result.correct) {
       playCorrectSound();
-      if (prevNodeId.startsWith('R1_N')) {
+      if (result.nextNode === 'R2_FINAL') {
+         setPlayingVideo('/Video/END.MOV');
+      } else if (prevNodeId.startsWith('R1_N')) {
          const qNum = parseInt(prevNodeId.replace('R1_N', ''));
          if (!isNaN(qNum)) setPlayingVideo(`/Video/${qNum}.MOV`);
       } else if (prevNodeId.startsWith('R2_N')) {
