@@ -235,13 +235,28 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (!targetTeam || !teams[targetTeam]) return;
     setTeams(prev => {
       const updated = { ...prev[targetTeam] };
+      
+      if (updated.currentRound === 1 && updated.currentNode.startsWith('R1_N')) {
+        const qNum = parseInt(updated.currentNode.replace('R1_N', ''));
+        if (!isNaN(qNum)) {
+          updated.videoQueue = [];
+          for (let i = qNum; i <= 20; i++) {
+            updated.videoQueue.push(i);
+          }
+          setTimeout(() => socket.emit('syncTeam', updated), 0);
+          return { ...prev, [targetTeam]: updated };
+        }
+      }
+
       updated.round1Complete = true;
       updated.round1EndTime = updated.round1EndTime || Date.now();
       updated.currentRound = 2;
       updated.currentNode = 'R2_START';
-      updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
+      if (!updated.visitedNodes.includes('R2_START')) {
+        updated.visitedNodes = [...updated.visitedNodes, 'R2_START'];
+      }
       updated.round2StartTime = Date.now();
-      updated.videoQueue = []; // Clear any videos just in case
+      updated.videoQueue = []; 
       
       setTimeout(() => socket.emit('syncTeam', updated), 0);
       return { ...prev, [targetTeam]: updated };
