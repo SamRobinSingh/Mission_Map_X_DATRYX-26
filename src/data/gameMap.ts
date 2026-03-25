@@ -215,7 +215,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     correctAnswer: 'MERGE SORT',
     hint: 'Think divide and conquer',
     nextOnCorrect: 'R2_N2',
-    nextOnWrong: 'R2_T1_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T1_1', x: 40.0, y: 82.0,
   },
   R2_T1_1: {
     id: 'R2_T1_1', type: 'trap', round: 2,
@@ -241,7 +241,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'In networking, what does TCP stand for?',
     correctAnswer: 'TRANSMISSION CONTROL PROTOCOL',
     nextOnCorrect: 'R2_N3',
-    nextOnWrong: 'R2_T2_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T2_1', x: 33.9, y: 74.9,
   },
   R2_T2_1: {
     id: 'R2_T2_1', type: 'trap', round: 2,
@@ -267,7 +267,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What design pattern ensures a class has only one instance?',
     correctAnswer: 'SINGLETON',
     nextOnCorrect: 'R2_N4',
-    nextOnWrong: 'R2_T3_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T3_1', x: 38.7, y: 68.1,
   },
   R2_T3_1: {
     id: 'R2_T3_1', type: 'trap', round: 2,
@@ -294,7 +294,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     correctAnswer: 'TYPE COERCION',
     hint: '"===" checks type too',
     nextOnCorrect: 'R2_N5',
-    nextOnWrong: 'R2_T4_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T4_1', x: 35.1, y: 64.1,
   },
   R2_T4_1: {
     id: 'R2_T4_1', type: 'trap', round: 2,
@@ -320,7 +320,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'In Git, what command creates a new branch?',
     correctAnswer: 'GIT BRANCH',
     nextOnCorrect: 'R2_N6',
-    nextOnWrong: 'R2_T5_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T5_1', x: 45.3, y: 53.3,
   },
   R2_T5_1: {
     id: 'R2_T5_1', type: 'trap', round: 2,
@@ -346,7 +346,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is the Big O notation for accessing an element in an array by index?',
     correctAnswer: 'O(1)',
     nextOnCorrect: 'R2_N7',
-    nextOnWrong: 'R2_T6_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T6_1', x: 41.3, y: 49.9,
   },
   R2_T6_1: {
     id: 'R2_T6_1', type: 'trap', round: 2,
@@ -373,7 +373,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     correctAnswer: 'REFERENCE ANOTHER TABLE',
     hint: 'It links tables together',
     nextOnCorrect: 'R2_N8',
-    nextOnWrong: 'R2_T7_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T7_1', x: 49.1, y: 44.4,
   },
   R2_T7_1: {
     id: 'R2_T7_1', type: 'trap', round: 2,
@@ -399,7 +399,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is a "closure" in programming?',
     correctAnswer: 'FUNCTION WITH ACCESS TO OUTER SCOPE',
     nextOnCorrect: 'R2_N9',
-    nextOnWrong: 'R2_T8_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T8_1', x: 54.3, y: 46.9,
   },
   R2_T8_1: {
     id: 'R2_T8_1', type: 'trap', round: 2,
@@ -425,7 +425,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is "recursion" in programming?',
     correctAnswer: 'FUNCTION CALLING ITSELF',
     nextOnCorrect: 'R2_N10',
-    nextOnWrong: 'R2_T9_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T9_1', x: 59.1, y: 50.5,
   },
   R2_T9_1: {
     id: 'R2_T9_1', type: 'trap', round: 2,
@@ -451,7 +451,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is the difference between GET and POST in HTTP?',
     correctAnswer: 'GET RETRIEVES POST SENDS DATA',
     nextOnCorrect: 'R2_N11',
-    nextOnWrong: 'R2_T10_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T10_1', x: 70.6, y: 49.2,
   },
   R2_T10_1: {
     id: 'R2_T10_1', type: 'trap', round: 2,
@@ -477,7 +477,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'Which HTTP method is used to update an existing resource entirely?',
     correctAnswer: 'PUT',
     nextOnCorrect: 'R2_N12',
-    nextOnWrong: 'R2_T11_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T11_1', x: 62.8, y: 56.6,
   },
   R2_T11_1: {
     id: 'R2_T11_1', type: 'trap', round: 2,
@@ -503,7 +503,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is the term for a function passed as an argument to another function?',
     correctAnswer: 'CALLBACK',
     nextOnCorrect: 'R2_N13',
-    nextOnWrong: 'R2_T12_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T12_1', x: 68.3, y: 63.8,
   },
   R2_T12_1: {
     id: 'R2_T12_1', type: 'trap', round: 2,
@@ -529,7 +529,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What data structure is typically used to implement a cache (like LRU)?',
     correctAnswer: 'HASH MAP AND DOUBLY LINKED LIST',
     nextOnCorrect: 'R2_N14',
-    nextOnWrong: 'R2_T13_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T13_1', x: 80.5, y: 58.8,
   },
   R2_T13_1: {
     id: 'R2_T13_1', type: 'trap', round: 2,
@@ -555,7 +555,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'Which sorting algorithm repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order?',
     correctAnswer: 'BUBBLE SORT',
     nextOnCorrect: 'R2_N15',
-    nextOnWrong: 'R2_T14_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T14_1', x: 82.2, y: 50.2,
   },
   R2_T14_1: {
     id: 'R2_T14_1', type: 'trap', round: 2,
@@ -581,7 +581,7 @@ export const ROUND2_NODES: Record<string, GameNode> = {
     question: 'What is the time complexity of a perfectly balanced binary search tree lookup?',
     correctAnswer: 'O(LOG N)',
     nextOnCorrect: 'R2_FINAL',
-    nextOnWrong: 'R2_T15_1', x: 50, y: 50,
+    nextOnWrong: 'R2_T15_1', x: 76.9, y: 38.8,
   },
   R2_T15_1: {
     id: 'R2_T15_1', type: 'trap', round: 2,
