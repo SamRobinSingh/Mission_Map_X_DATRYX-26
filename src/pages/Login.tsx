@@ -17,9 +17,9 @@ export default function Login() {
 
   const handleRegister = () => {
     if (!teamName.trim()) { setError('Enter your house name, wizard.'); return; }
-    if (!passcode.trim()) { setError('Enter a secure passcode.'); return; }
+    if (passcode !== '260326') { setError('Invalid House Registration Password!'); return; }
     if (registerTeam(teamName, passcode)) navigate('/game');
-    else setError('That house name is taken or passcode invalid.');
+    else setError('That house name is taken.');
   };
 
   const handleLogin = () => {
