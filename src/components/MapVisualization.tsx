@@ -708,8 +708,15 @@ export default function MapVisualization({ currentNode, visitedNodes, onSubmitAn
                   <p className="text-amber-200 text-sm font-bold">Outstanding, wizard!</p>
                   <p className="text-white/50 text-xs">FLAG: HOGWARTS{'{R0UND_1_COMPLETE}'}</p>
                   <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3">
+                    {/* Expose button if global turn-on happened, else wait */}
+                    <button 
+                      onClick={() => onSubmitAnswer('CUTSCENE_SKIP')} // We can piggyback here, wait no
+                      className="hidden" 
+                    />
                     <p className="text-amber-300 text-xs font-bold">⏳ Waiting for the Headmaster...</p>
-                    <p className="text-white/40 text-[10px] mt-1">Round 2 will be unlocked by Admin.</p>
+                    <p className="text-white/40 text-[10px] mt-1">
+                      Check your comms. When Admin unlocks Round 2, you will automatically be moved to the next sector when you click any node! Or the Admin can manually advance you.
+                    </p>
                   </div>
                   <motion.div className="flex justify-center gap-1"
                     animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }}>

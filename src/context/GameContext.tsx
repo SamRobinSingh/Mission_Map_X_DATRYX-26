@@ -236,9 +236,17 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setTeams(prev => {
       const updated = { ...prev[targetTeam] };
       
-      if (updated.currentRound === 1 && updated.currentNode.startsWith('R1_N')) {
-        const qNum = parseInt(updated.currentNode.replace('R1_N', ''));
-        if (!isNaN(qNum)) {
+      if (updated.currentRound === 1 && updated.currentNode !== 'R1_FINAL') {
+        let qNum = 1;
+        if (updated.currentNode !== 'R1_START') {
+          // Extract numbers from R1_N13 or R1_T4_2
+          const match = updated.currentNode.match(/\d+/g);
+          if (match && match.length > 1) {
+            qNum = parseInt(match[1]); // e.g. R1_N13 -> 13, R1_T4_2 -> 4
+          }
+        }
+        
+        if (!isNaN(qNum) && qNum <= 20) {
           updated.videoQueue = [];
           for (let i = qNum; i <= 20; i++) {
             updated.videoQueue.push(i);
