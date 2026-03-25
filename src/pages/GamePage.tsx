@@ -11,9 +11,9 @@ export default function GamePage() {
   const { currentTeam, isInitialized, submitAnswer, submitSecretCode, skipNode, useHint, logoutTeam, currentTeamName, advanceVideoQueue } = useGame();
   const navigate = useNavigate();
   const [feedback, setFeedback] = useState<{ msg: string; type: 'success' | 'error' | 'secret' } | null>(null);
-  const [timeRemaining, setTimeRemaining] = useState(0);
+  const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [timerWarning, setTimerWarning] = useState<'none' | 'five' | 'one' | 'expired'>('none');
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   useEffect(() => {
     if (isInitialized && !currentTeam) navigate('/');
@@ -22,7 +22,7 @@ export default function GamePage() {
   // Auto-play videos queued by admin fast-forwarding
   useEffect(() => {
     if (!playingVideo && currentTeam?.videoQueue && currentTeam.videoQueue.length > 0) {
-      setPlayingVideo(currentTeam.videoQueue[0]);
+      setPlayingVideo(`/Video/${currentTeam.videoQueue[0]}.MOV`);
     }
   }, [currentTeam?.videoQueue, playingVideo]);
 
@@ -78,7 +78,15 @@ export default function GamePage() {
       playCorrectSound();
       if (prevNodeId.startsWith('R1_N')) {
          const qNum = parseInt(prevNodeId.replace('R1_N', ''));
-         if (!isNaN(qNum)) setPlayingVideo(qNum);
+         if (!isNaN(qNum)) setPlayingVideo(`/Video/${qNum}.MOV`);
+      } else if (prevNodeId.startsWith('R2_N')) {
+         const qNum = parseInt(prevNodeId.replace('R2_N', ''));
+         if (!isNaN(qNum)) {
+            if (qNum === 13) setPlayingVideo(`/Video/Round2/13.MP4`);
+            else setPlayingVideo(`/Video/Round2/${qNum}.MOV`);
+         }
+      } else if (prevNodeId === 'R2_START') {
+         setPlayingVideo(`/Video/Round2/1.MOV`);
       }
     } else if (result.nextNode !== currentTeam.currentNode) {
       playTrapSound();
@@ -102,7 +110,15 @@ export default function GamePage() {
     playSecretSound(); // Reuse success/secret sound
     if (prevNodeId.startsWith('R1_N')) {
       const qNum = parseInt(prevNodeId.replace('R1_N', ''));
-      if (!isNaN(qNum)) setPlayingVideo(qNum);
+      if (!isNaN(qNum)) setPlayingVideo(`/Video/${qNum}.MOV`);
+    } else if (prevNodeId.startsWith('R2_N')) {
+       const qNum = parseInt(prevNodeId.replace('R2_N', ''));
+       if (!isNaN(qNum)) {
+          if (qNum === 13) setPlayingVideo(`/Video/Round2/13.MP4`);
+          else setPlayingVideo(`/Video/Round2/${qNum}.MOV`);
+       }
+    } else if (prevNodeId === 'R2_START') {
+       setPlayingVideo(`/Video/Round2/1.MOV`);
     }
   };
 
@@ -161,7 +177,7 @@ export default function GamePage() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
              className="absolute inset-0 z-[500] bg-black flex flex-col items-center justify-center">
              <video 
-               src={`/Video/${playingVideo}.MOV`}
+               src={playingVideo}
                autoPlay
                controls
                onEnded={handleVideoEnded}
